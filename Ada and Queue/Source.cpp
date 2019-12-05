@@ -18,10 +18,11 @@ int main()
 	long int testCases;
 	cin >> testCases;
 
-	deque <long int> adaqueue;
+	deque < long int> adaqueue;
 
 	string userInput;
 	int input;
+	int m;
 
 	for (long int i = 0; i < testCases; i++)
 	{
@@ -29,13 +30,23 @@ int main()
 
 		if (userInput == "back" && !adaqueue.empty())
 		{
-			cout << adaqueue.back() << endl;
-			adaqueue.pop_back();
+			//cout << adaqueue.back() << endl;
+			for(m=0;m<adaqueue.size();m++)
+			{
+				cout << adaqueue.back();
+				adaqueue.pop_back();
+			}
+			
 		}
 		else if (userInput == "front" && !adaqueue.empty())
 		{
-			cout << adaqueue.front() << endl;
-			adaqueue.pop_front();
+			//cout << adaqueue.front() << endl;
+			//adaqueue.pop_front();
+				for(m=0;m<adaqueue.size();m++)
+			{
+				cout << adaqueue.front();
+				adaqueue.pop_front();
+			}
 		}
 		else if (userInput == "reverse")
 		{
@@ -45,7 +56,8 @@ int main()
 				//reverse(adaqueue.begin(), adaqueue.end());  // for reversing the deque
 				//int *a;
 				//a= new int [adaqueue.size()];
-				int a[100];
+				int *a;
+				a=new int[adaqueue.size()];
 				int k,c;
 				for( k=0;k<adaqueue.size();k++)
 				{
@@ -85,6 +97,6 @@ int main()
 	}
 
 	cout << endl;
-	system("pause");
+	//system("pause");
 	return 0;
 }
