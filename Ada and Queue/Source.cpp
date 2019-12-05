@@ -15,51 +15,66 @@ using namespace std;
 
 int main()
 {
-	long int testCases;
+	 int testCases;
 	cin >> testCases;
 
-	deque < long int> adaqueue;
+	deque < int> adaqueue;
 
 	string userInput;
-	int input;
-	int m;
+	 int input;
+	 int m;
+	 int s;
 
-	for (long int i = 0; i < testCases; i++)
+	for ( int i = 0; i < testCases; i++)
 	{
 		cin >> userInput;
+		s=adaqueue.size();
 
-		if (userInput == "back" && !adaqueue.empty())
+		if (userInput == "back")
 		{
 			//cout << adaqueue.back() << endl;
-			for(m=0;m<adaqueue.size();m++)
+			if(adaqueue.empty())
+			{
+				cout << "No job for Ada ?" << endl;
+			}
+			else{
+			
+			for(m=0;m<s;m++)
 			{
 				cout << adaqueue.back();
+				cout <<" ";
 				adaqueue.pop_back();
 			}
-			
+			}
 		}
-		else if (userInput == "front" && !adaqueue.empty())
+		else if (userInput == "front")
 		{
-			//cout << adaqueue.front() << endl;
-			//adaqueue.pop_front();
-				for(m=0;m<adaqueue.size();m++)
+			
+			if(adaqueue.empty())
+			{
+				cout << "No job for Ada ?" << endl;
+			}
+			else{
+			
+				for(m=0;m<s;m++)
 			{
 				cout << adaqueue.front();
 				adaqueue.pop_front();
 			}
 		}
+		}
 		else if (userInput == "reverse")
 		{
-			if (adaqueue.size() == 1)  // if there is only one item in the deque, then we don't need to reverse it
+			if (adaqueue.size() == 1 || adaqueue.size()==0 )  // if there is only one item in the deque, then we don't need to reverse it
 				continue;
 			else{
-				//reverse(adaqueue.begin(), adaqueue.end());  // for reversing the deque
-				//int *a;
-				//a= new int [adaqueue.size()];
+			
 				int *a;
-				a=new int[adaqueue.size()];
-				int k,c;
-				for( k=0;k<adaqueue.size();k++)
+				
+				 int k,c;
+				s=adaqueue.size();
+				a=new int[s];
+				for( k=0;k<s;k++)
 				{
 				   a[k]=adaqueue.front();
 				   adaqueue.pop_front();
@@ -67,36 +82,37 @@ int main()
 					
 				}
 					
-       						  
-   				 for(int p=0;p<k/2;p++)
+       			k=k-1;
+				int temp;			  
+   				 for( int p=0;p<=(s/2);p++)
 				 {
-					 a[p]=a[k];
+					 
+					 temp=a[k];
+					 a[k]=a[p];
+					 a[p]=temp;
 					 k--;
 				 }
-				for(int x=0;x<adaqueue.size();x++)
+				for(int x=0;x<s;x++)
 				{
-					adaqueue.push_front(x);
+					adaqueue.push_back(a[x]);
 				}
 				
 			}
+		
 		}
 		else if (userInput == "push_back")
 		{
 			cin >> input;
 			adaqueue.push_back(input);
+		
 		}
 		else if (userInput == "toFront")
 		{
 			cin >> input;
 			adaqueue.push_front(input);
 		}
-		else
-		{
-			cout << "No job for Ada ?" << endl;
-		}
+	
 	}
 
-	cout << endl;
-	//system("pause");
 	return 0;
 }
