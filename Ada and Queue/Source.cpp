@@ -6,6 +6,7 @@
 // Main.cpp
 
 
+#include <bits/stdc++.h>
 #include<iostream>
 #include<algorithm>
 #include<queue>
@@ -14,15 +15,15 @@ using namespace std;
 
 int main()
 {
-	int testCases;
+	long int testCases;
 	cin >> testCases;
 
-	deque <int> adaqueue;
+	deque <long int> adaqueue;
 
 	string userInput;
 	int input;
 
-	for (int i = 0; i < testCases; i++)
+	for (long int i = 0; i < testCases; i++)
 	{
 		cin >> userInput;
 
@@ -40,8 +41,32 @@ int main()
 		{
 			if (adaqueue.size() == 1)  // if there is only one item in the deque, then we don't need to reverse it
 				continue;
-			else
-				reverse(adaqueue.begin(), adaqueue.end());  // for reversing the deque
+			else{
+				//reverse(adaqueue.begin(), adaqueue.end());  // for reversing the deque
+				//int *a;
+				//a= new int [adaqueue.size()];
+				int a[100];
+				int k,c;
+				for( k=0;k<adaqueue.size();k++)
+				{
+				   a[k]=adaqueue.front();
+				   adaqueue.pop_front();
+					
+					
+				}
+					
+       						  
+   				 for(int p=0;p<k/2;p++)
+				 {
+					 a[p]=a[k];
+					 k--;
+				 }
+				for(int x=0;x<adaqueue.size();x++)
+				{
+					adaqueue.push_front(x);
+				}
+				
+			}
 		}
 		else if (userInput == "push_back")
 		{
