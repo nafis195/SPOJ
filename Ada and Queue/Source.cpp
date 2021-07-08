@@ -6,6 +6,7 @@
 // Main.cpp
 
 
+#include <bits/stdc++.h>
 #include<iostream>
 #include<algorithm>
 #include<queue>
@@ -14,52 +15,104 @@ using namespace std;
 
 int main()
 {
-	int testCases;
+	 int testCases;
 	cin >> testCases;
 
-	deque <int> adaqueue;
+	deque < int> adaqueue;
 
 	string userInput;
-	int input;
+	 int input;
+	 int m;
+	 int s;
 
-	for (int i = 0; i < testCases; i++)
+	for ( int i = 0; i < testCases; i++)
 	{
 		cin >> userInput;
+		s=adaqueue.size();
 
-		if (userInput == "back" && !adaqueue.empty())
+		if (userInput == "back")
 		{
-			cout << adaqueue.back() << endl;
-			adaqueue.pop_back();
+			//cout << adaqueue.back() << endl;
+			if(adaqueue.empty())
+			{
+				cout << "No job for Ada ?" << endl;
+			}
+			else{
+			
+			for(m=0;m<s;m++)
+			{
+				cout << adaqueue.back();
+				cout <<" ";
+				adaqueue.pop_back();
+			}
+			}
 		}
-		else if (userInput == "front" && !adaqueue.empty())
+		else if (userInput == "front")
 		{
-			cout << adaqueue.front() << endl;
-			adaqueue.pop_front();
+			
+			if(adaqueue.empty())
+			{
+				cout << "No job for Ada ?" << endl;
+			}
+			else{
+			
+				for(m=0;m<s;m++)
+			{
+				cout << adaqueue.front();
+				adaqueue.pop_front();
+			}
+		}
 		}
 		else if (userInput == "reverse")
 		{
-			if (adaqueue.size() == 1)  // if there is only one item in the deque, then we don't need to reverse it
+			if (adaqueue.size() == 1 || adaqueue.size()==0 )  // if there is only one item in the deque, then we don't need to reverse it
 				continue;
-			else
-				reverse(adaqueue.begin(), adaqueue.end());  // for reversing the deque
+			else{
+			
+				int *a;
+				
+				 int k,c;
+				s=adaqueue.size();
+				a=new int[s];
+				for( k=0;k<s;k++)
+				{
+				   a[k]=adaqueue.front();
+				   adaqueue.pop_front();
+					
+					
+				}
+					
+       			k=k-1;
+				int temp;			  
+   				 for( int p=0;p<=(s/2);p++)
+				 {
+					 
+					 temp=a[k];
+					 a[k]=a[p];
+					 a[p]=temp;
+					 k--;
+				 }
+				for(int x=0;x<s;x++)
+				{
+					adaqueue.push_back(a[x]);
+				}
+				
+			}
+		
 		}
 		else if (userInput == "push_back")
 		{
 			cin >> input;
 			adaqueue.push_back(input);
+		
 		}
 		else if (userInput == "toFront")
 		{
 			cin >> input;
 			adaqueue.push_front(input);
 		}
-		else
-		{
-			cout << "No job for Ada ?" << endl;
-		}
+	
 	}
 
-	cout << endl;
-	system("pause");
 	return 0;
 }
